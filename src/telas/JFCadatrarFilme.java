@@ -26,6 +26,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class JFCadatrarFilme extends JFrame {
 
@@ -53,6 +55,7 @@ public class JFCadatrarFilme extends JFrame {
 	 * Create the frame.
 	 */
 	public JFCadatrarFilme() {
+		setBackground(new Color(245, 222, 179));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 498, 446);
 		contentPane = new JPanel();
@@ -63,6 +66,8 @@ public class JFCadatrarFilme extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("Cadastro do filme");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBackground(new Color(245, 222, 179));
 		lblTitulo.setFont(new Font("Californian FB", Font.BOLD, 19));
 		lblTitulo.setBounds(172, 11, 165, 20);
 		contentPane.add(lblTitulo);
@@ -77,6 +82,7 @@ public class JFCadatrarFilme extends JFrame {
 		textTituloFilme.setColumns(10);
 		
 		JLabel lblTituloFilme = new JLabel("T\u00EDtulo:");
+		lblTituloFilme.setBackground(new Color(245, 222, 179));
 		lblTituloFilme.setFont(new Font("Arial", Font.BOLD, 14));
 		lblTituloFilme.setBounds(36, 33, 75, 20);
 		contentPane.add(lblTituloFilme);
@@ -174,20 +180,20 @@ public class JFCadatrarFilme extends JFrame {
 				dao.create(f);
 			}
 		});
-		btnCadastrarFilme.setBackground(SystemColor.menu);
+		btnCadastrarFilme.setBackground(UIManager.getColor("MenuBar.background"));
 		btnCadastrarFilme.setForeground(new Color(0, 0, 0));
 		btnCadastrarFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnCadastrarFilme.setBounds(98, 330, 100, 23);
 		contentPane.add(btnCadastrarFilme);
 		
 		JButton btnLimparCadastroFilme = new JButton("Limpar");
-		btnLimparCadastroFilme.setBackground(SystemColor.menu);
+		btnLimparCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
 		btnLimparCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnLimparCadastroFilme.setBounds(222, 330, 89, 23);
 		contentPane.add(btnLimparCadastroFilme);
 		
 		JButton btnEnviarCadastroFilme = new JButton("Enviar");
-		btnEnviarCadastroFilme.setBackground(SystemColor.menu);
+		btnEnviarCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
 		btnEnviarCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnEnviarCadastroFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

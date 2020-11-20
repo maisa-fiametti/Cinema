@@ -1,7 +1,7 @@
 package model.bean;
 
 public class Cliente {
-	private int idCliente;
+	private int idCliente; 
 	private String nome;
 	private String cpf;
 	private String endereco;
