@@ -26,8 +26,8 @@ public class Cliente {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-	public String getEndereco() {
+	} 
+	public String getEndereco() { 
 		return endereco;
 	}
 	public void setEndereco(String endereco) {
