@@ -36,7 +36,7 @@ import java.sql.SQLException;
 	}
 	public static void closeConnection(Connection con, PreparedStatement stmt) {
 		closeConnection(con);
-		if (stmt != null) {
+		if (stmt != null) { 
 			try {
 				stmt.close();
 			} catch (SQLException e) {
