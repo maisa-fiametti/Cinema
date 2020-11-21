@@ -22,7 +22,7 @@ public class Cliente {
 		this.nome = nome;
 	}
 	public String getCpf() {
-		return cpf;
+		return cpf; 
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;

@@ -50,7 +50,6 @@ public class JFCadatrarFilme extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
