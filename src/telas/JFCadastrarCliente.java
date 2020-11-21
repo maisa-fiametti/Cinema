@@ -146,7 +146,7 @@ public class JFCadastrarCliente extends JFrame {
 				
 				dao.create(c);
 			}
-		}); 
+		});  
 		btnBotaoCadastrar.setBackground(UIManager.getColor("Menu.background"));
 		btnBotaoCadastrar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnBotaoCadastrar.setBounds(103, 325, 109, 23);
