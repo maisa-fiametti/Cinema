@@ -67,6 +67,7 @@ public class JFListarFilmes extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JtFilme = new JTable();
+		JtFilme.setFont(new Font("Arial", Font.PLAIN, 15));
 		JtFilme.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null},

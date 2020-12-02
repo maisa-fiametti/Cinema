@@ -142,7 +142,7 @@ public class JFCadastrarCliente extends JFrame {
 				c.setCpf(textCPFCliente.getText());
 				c.setEndereco(textEnderecoCliente.getText());
 				c.setTelefone(textTelefoneCliente.getText());
-				c.setIdade(Integer.parseInt(textTelefoneCliente.getText().toString()));
+				c.setIdade(Integer.parseInt(textIdadeCliente.getText().toString()));
 				
 				dao.create(c);
 			}
