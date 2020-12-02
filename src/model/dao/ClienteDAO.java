@@ -14,7 +14,7 @@ import model.bean.Cliente;
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt = con.prepareStatement("INSERT INTO CLIENTE(nome, cpf, endereco, telefone, idade) "+"(?,?,?,?,?)");
+			stmt = con.prepareStatement("INSERT INTO CLIENTE(nome, cpf, endereco, telefone, idade) VALUES "+"(?,?,?,?,?)");
 		
 			stmt.setString(1, c.getNome());
 			stmt.setString(2, c.getCpf());
