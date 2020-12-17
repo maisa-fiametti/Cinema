@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -20,6 +22,7 @@ import model.bean.Filme;
 import model.dao.FilmeDAO;
 
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
 
 public class JFListarFilmes extends JFrame {
 
@@ -87,6 +90,23 @@ public class JFListarFilmes extends JFrame {
 		contentPane.add(btnCadastrarFilme);
 		
 		JButton btnAlterarFilme = new JButton("Alterar Filme");
+		btnAlterarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//verificar se há linha selecionada 
+				
+				
+				if(JtFilme.getSelectedRow()!= -1) {
+					JFAtualizarFIlme af = new JFAtualizarFIlme((int)JtFilme.getValueAt(JtFilme.getSelectedRow(), 0));
+					af.setVisible(true);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecione um filme!");
+				}
+				readJTable();
+				
+			}
+		});
 		btnAlterarFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnAlterarFilme.setBackground(SystemColor.menu);
 		btnAlterarFilme.setBounds(174, 312, 136, 31);
