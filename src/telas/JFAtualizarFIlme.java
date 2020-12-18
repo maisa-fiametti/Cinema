@@ -99,6 +99,16 @@ public class JFAtualizarFIlme extends JFrame {
 		lblTituloFilme.setBounds(36, 70, 75, 20);
 		contentPane.add(lblTituloFilme);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(417, 165, -318, -54);
+		contentPane.add(scrollPane);
+		
+		JTextArea textSinopseFilme = new JTextArea();
+		textSinopseFilme.setBackground(SystemColor.info);
+		textSinopseFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		textSinopseFilme.setBounds(91, 164, 336, 70);
+		contentPane.add(textSinopseFilme);
+		
 		JLabel TextSinopseFilme = new JLabel("Sinopse:");
 		TextSinopseFilme.setFont(new Font("Arial", Font.BOLD, 14));
 		TextSinopseFilme.setBounds(21, 133, 90, 20);
@@ -172,7 +182,7 @@ public class JFAtualizarFIlme extends JFrame {
 		
 		lblId.setText(String.valueOf(f.getIdFilme()));
 		textTituloFilme.setText(f.getTitulo());
-		TextSinopseFilme.setText(f.getSinopse());
+		textSinopseFilme.setText(f.getSinopse());
 		textCategoriaFilme.setText(f.getCategoria());
 		spinnerTempoFilme.setValue(f.getTempo());
 		if(f.isImagem3d() == true) {
@@ -192,6 +202,8 @@ public class JFAtualizarFIlme extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Filme f = new Filme();
 				FilmeDAO dao = new FilmeDAO();
+				
+				f.setIdFilme(Integer.parseInt(lblId.getText()));
 				f.setTitulo(textTituloFilme.getText());
 				f.setSinopse(TextSinopseFilme.getText());
 				f.setCategoria(textCategoriaFilme.getText());
@@ -206,7 +218,7 @@ public class JFAtualizarFIlme extends JFrame {
 				}else if (rdbtnLegendado.isSelected()) {
 					f.setDublado(false);
 				}
-				dao.create(f);
+				dao.update(f);
 			}
 		});
 		btnAlterarFilme.setBackground(UIManager.getColor("MenuBar.background"));
@@ -215,31 +227,22 @@ public class JFAtualizarFIlme extends JFrame {
 		btnAlterarFilme.setBounds(91, 373, 100, 23);
 		contentPane.add(btnAlterarFilme);
 		
-		JButton btnLimparCadastroFilme = new JButton("Limpar");
-		btnLimparCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
-		btnLimparCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnLimparCadastroFilme.setBounds(219, 373, 89, 23);
-		contentPane.add(btnLimparCadastroFilme);
+		JButton btnLimparAlteracaoFilme = new JButton("Limpar");
+		btnLimparAlteracaoFilme.setBackground(UIManager.getColor("Menu.background"));
+		btnLimparAlteracaoFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnLimparAlteracaoFilme.setBounds(219, 373, 89, 23);
+		contentPane.add(btnLimparAlteracaoFilme);
 		
-		JButton btnEnviarCadastroFilme = new JButton("Enviar");
-		btnEnviarCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
-		btnEnviarCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnEnviarCadastroFilme.addActionListener(new ActionListener() {
+		JButton btnEnviaraltercaoFilme = new JButton("Enviar");
+		btnEnviaraltercaoFilme.setBackground(UIManager.getColor("Menu.background"));
+		btnEnviaraltercaoFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnEnviaraltercaoFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnEnviarCadastroFilme.setBounds(338, 373, 89, 23);
-		contentPane.add(btnEnviarCadastroFilme);
+		btnEnviaraltercaoFilme.setBounds(338, 373, 89, 23);
+		contentPane.add(btnEnviaraltercaoFilme);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(417, 165, -318, -54);
-		contentPane.add(scrollPane);
-		
-		JTextArea textSinopseFilme = new JTextArea();
-		textSinopseFilme.setBackground(SystemColor.info);
-		textSinopseFilme.setFont(new Font("Arial", Font.PLAIN, 14));
-		textSinopseFilme.setBounds(91, 164, 336, 70);
-		contentPane.add(textSinopseFilme);
 		
 	
 	}

@@ -118,9 +118,9 @@ import model.bean.Filme;
 			stmt.setBoolean(6, f.isDublado());
 			stmt.setInt(7, f.getIdFilme());
 			stmt.executeUpdate();
-			JOptionPane.showMessageDialog(null, "Filme atualizado com sucesso!");
+			JOptionPane.showMessageDialog(null, "Filme alterado com sucesso!");
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Erro ao atualizar: "+ e);
+			JOptionPane.showMessageDialog(null, "Erro ao alterar: "+ e);
 			
 			//encerrando a conexão
 		}finally {
