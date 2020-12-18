@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
@@ -21,6 +23,8 @@ import model.dao.FilmeDAO;
 
 import javax.swing.JButton;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFListarClientes extends JFrame {
 
@@ -92,6 +96,21 @@ public class JFListarClientes extends JFrame {
 		contentPane.add(btnCadastrarCliente);
 		
 		JButton btnAlterarCliente = new JButton("Alterar Cliente");
+		btnAlterarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//verificar se há linha selecionada 
+				
+				
+				if(JtCliente.getSelectedRow()!= -1) {
+					JFAtualizarCliente ac = new JFAtualizarCliente((int)JtCliente.getValueAt(JtCliente.getSelectedRow(), 0));
+					ac.setVisible(true);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecione um cliente!");
+				}
+				readJTable();
+			}
+		});
 		btnAlterarCliente.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnAlterarCliente.setBackground(SystemColor.menu);
 		btnAlterarCliente.setBounds(197, 306, 133, 33);

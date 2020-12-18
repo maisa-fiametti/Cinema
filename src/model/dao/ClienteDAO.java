@@ -68,5 +68,61 @@ import model.bean.Filme;
 			
 			return clientes;
 		}
+		
+		
+		
+		// ABAIXO HÁ OS MÉTODOS PARA ALTERAR O CADASTRO DE FILMES
+
+		public Cliente read(int idCliente) {
+			Connection con = ConnectionFactory.getConnection(); //conectar com o banco
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			Cliente c = new Cliente();
 			
+			try {
+				stmt = con.prepareStatement("SELECT * FROM cliente WHERE idCliente=? LIMIT 1;");
+				stmt.setInt(1, idCliente);
+				rs = stmt.executeQuery();
+				if(rs != null && rs.next()) {
+					c.setIdCliente(rs.getInt("idCliente"));
+					c.setNome(rs.getString("nome"));
+					c.setCpf(rs.getString("cpf"));
+					c.setEndereco(rs.getString("endereco"));
+					c.setTelefone(rs.getString("telefone"));
+					c.setIdade(rs.getInt("idade"));
+				}		
+			} catch (SQLException e) {
+				e.printStackTrace();
+				
+				// O FINALLY ENCERRA A CONEXÃO
+			} finally {
+				ConnectionFactory.closeConnection(con, stmt, rs);
+			}
+			return c;
+		}
+		
+		//agora há o método para alterar o registro no banco de dados
+		public void update(Cliente c) {
+			Connection con = ConnectionFactory.getConnection();
+			PreparedStatement stmt = null;
+			
+			try {
+				stmt = con.prepareStatement("UPDATE cliente SET nome=?, cpf=?, endereco=?,"
+						+ "telefone=?, idade=?;");
+				stmt.setString(1, c.getNome());
+				stmt.setString(2, c.getCpf());
+				stmt.setString(3, c.getEndereco());
+				stmt.setString(4, c.getTelefone());
+				stmt.setInt(5, c.getIdade());
+				stmt.executeUpdate();
+				JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, "Erro ao alterar: "+ e);
+				
+				//encerrando a conexão
+			}finally {
+				ConnectionFactory.closeConnection(con, stmt);
+			}
+		}
+		
 }
