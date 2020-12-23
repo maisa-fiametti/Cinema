@@ -108,12 +108,13 @@ import model.bean.Filme;
 			
 			try {
 				stmt = con.prepareStatement("UPDATE cliente SET nome=?, cpf=?, endereco=?,"
-						+ "telefone=?, idade=?;");
+						+ "telefone=?, idade=?; WHERE idCliente=?;");
 				stmt.setString(1, c.getNome());
 				stmt.setString(2, c.getCpf());
 				stmt.setString(3, c.getEndereco());
 				stmt.setString(4, c.getTelefone());
 				stmt.setInt(5, c.getIdade());
+				stmt.setInt(6, c.getIdCliente());
 				stmt.executeUpdate();
 				JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
 			} catch (SQLException e) {
