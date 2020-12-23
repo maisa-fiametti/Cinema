@@ -108,7 +108,7 @@ import model.bean.Filme;
 			
 			try {
 				stmt = con.prepareStatement("UPDATE cliente SET nome=?, cpf=?, endereco=?,"
-						+ "telefone=?, idade=?; WHERE idCliente=?;");
+						+ "telefone=?, idade=? WHERE idCliente=?;");
 				stmt.setString(1, c.getNome());
 				stmt.setString(2, c.getCpf());
 				stmt.setString(3, c.getEndereco());
