@@ -156,7 +156,7 @@ public class JFAtualizarCliente extends JFrame {
 		textCPFCliente.setText(c.getCpf());
 		textEnderecoCliente.setText(c.getEndereco());
 		textTelefoneCliente.setText(c.getTelefone());
-		textIdadeCliente.setValue(c.getIdade());
+		textIdadeCliente.setText(Integer.toString(c.getIdade()));
 		
 		
 		JButton btnBotaoAlterarCliente = new JButton("Alterar");

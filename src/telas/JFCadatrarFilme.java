@@ -71,6 +71,12 @@ public class JFCadatrarFilme extends JFrame {
 		lblTitulo.setBounds(172, 11, 165, 20);
 		contentPane.add(lblTitulo);
 		
+		JLabel lblTituloFilme = new JLabel("T\u00EDtulo:");
+		lblTituloFilme.setBackground(new Color(245, 222, 179));
+		lblTituloFilme.setFont(new Font("Arial", Font.BOLD, 14));
+		lblTituloFilme.setBounds(36, 33, 75, 20);
+		contentPane.add(lblTituloFilme);
+		
 		textTituloFilme = new JTextField();
 		textTituloFilme.setForeground(Color.BLACK);
 		textTituloFilme.setBackground(SystemColor.info);
@@ -80,16 +86,21 @@ public class JFCadatrarFilme extends JFrame {
 		contentPane.add(textTituloFilme);
 		textTituloFilme.setColumns(10);
 		
-		JLabel lblTituloFilme = new JLabel("T\u00EDtulo:");
-		lblTituloFilme.setBackground(new Color(245, 222, 179));
-		lblTituloFilme.setFont(new Font("Arial", Font.BOLD, 14));
-		lblTituloFilme.setBounds(36, 33, 75, 20);
-		contentPane.add(lblTituloFilme);
 		
 		JLabel TextSinopseFilme = new JLabel("Sinopse:");
 		TextSinopseFilme.setFont(new Font("Arial", Font.BOLD, 14));
 		TextSinopseFilme.setBounds(36, 82, 90, 20);
 		contentPane.add(TextSinopseFilme);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(417, 165, -318, -54);
+		contentPane.add(scrollPane);
+		
+		JTextArea textSinopseFilme = new JTextArea();
+		textSinopseFilme.setBackground(SystemColor.info);
+		textSinopseFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		textSinopseFilme.setBounds(91, 105, 336, 70);
+		contentPane.add(textSinopseFilme);
 		
 		JLabel lblCategoriaFilme = new JLabel("Categoria:");
 		lblCategoriaFilme.setFont(new Font("Arial", Font.BOLD, 14));
@@ -154,8 +165,8 @@ public class JFCadatrarFilme extends JFrame {
 		contentPane.add(rdbtnLegendado);
 		
 		ButtonGroup audio = new ButtonGroup();
-		imagem.add(rdbtnDublado);
-		imagem.add(rdbtnLegendado);
+		audio.add(rdbtnDublado);
+		audio.add(rdbtnLegendado);
 		
 		JButton btnCadastrarFilme = new JButton("Cadastrar");
 		btnCadastrarFilme.addActionListener(new ActionListener() {
@@ -201,14 +212,7 @@ public class JFCadatrarFilme extends JFrame {
 		btnEnviarCadastroFilme.setBounds(326, 330, 89, 23);
 		contentPane.add(btnEnviarCadastroFilme);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(417, 165, -318, -54);
-		contentPane.add(scrollPane);
 		
-		JTextArea textSinopseFilme = new JTextArea();
-		textSinopseFilme.setBackground(SystemColor.info);
-		textSinopseFilme.setFont(new Font("Arial", Font.PLAIN, 14));
-		textSinopseFilme.setBounds(91, 105, 336, 70);
-		contentPane.add(textSinopseFilme);
+		
 	}
 }
