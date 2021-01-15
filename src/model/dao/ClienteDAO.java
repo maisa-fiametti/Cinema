@@ -125,5 +125,23 @@ import model.bean.Filme;
 				ConnectionFactory.closeConnection(con, stmt);
 			}
 		}
+		//agora há o método para deletar o registro no banco de dados
+		public void delete(Cliente c) {
+			Connection con = ConnectionFactory.getConnection();
+			PreparedStatement stmt = null;
+			
+			try {
+				stmt = con.prepareStatement("DELETE FROM cliente WHERE idCliente=?");
+				stmt.setInt(1, c.getIdCliente());
+				stmt.executeUpdate();
+				JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
+				
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, "Erro ao excluir: "+ e);
+			} finally {
+				ConnectionFactory.closeConnection(con, stmt);
+			}
+			
+		}
 		
 }

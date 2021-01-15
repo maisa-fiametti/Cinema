@@ -113,6 +113,24 @@ public class JFListarFilmes extends JFrame {
 		contentPane.add(btnAlterarFilme);
 		
 		JButton btnExcluirFilme = new JButton("Excluir Filme");
+		btnExcluirFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(JtFilme.getSelectedRow() != -1) {
+					
+					int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o filme selecionado?"
+							,"Exclusão",JOptionPane.YES_NO_OPTION);
+					if (opcao == 0) {
+						FilmeDAO dao = new FilmeDAO();
+						Filme f = new Filme();
+						f.setIdFilme((int) JtFilme.getValueAt(JtFilme.getSelectedRow(), 0));
+						dao.delete(f);
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecione um filme!");
+				}
+				readJTable();
+			}
+		});
 		btnExcluirFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnExcluirFilme.setBackground(SystemColor.menu);
 		btnExcluirFilme.setBounds(320, 312, 111, 31);
