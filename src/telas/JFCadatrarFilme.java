@@ -55,7 +55,7 @@ public class JFCadatrarFilme extends JFrame {
 	 */
 	public JFCadatrarFilme() {
 		setBackground(new Color(245, 222, 179));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 498, 446);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.BLACK);
@@ -188,6 +188,7 @@ public class JFCadatrarFilme extends JFrame {
 					f.setDublado(false);
 				}
 				dao.create(f);
+				dispose();
 			}
 		});
 		btnCadastrarFilme.setBackground(UIManager.getColor("MenuBar.background"));
@@ -197,20 +198,31 @@ public class JFCadatrarFilme extends JFrame {
 		contentPane.add(btnCadastrarFilme);
 		
 		JButton btnLimparCadastroFilme = new JButton("Limpar");
+		btnLimparCadastroFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textTituloFilme.setText(null);
+				textSinopseFilme.setText(null);
+				textCategoriaFilme.setText(null);
+				spinnerTempoFilme.setValue(0);
+				imagem.clearSelection();
+				audio.clearSelection();
+			}
+		});
 		btnLimparCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
 		btnLimparCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnLimparCadastroFilme.setBounds(222, 330, 89, 23);
 		contentPane.add(btnLimparCadastroFilme);
 		
-		JButton btnEnviarCadastroFilme = new JButton("Enviar");
-		btnEnviarCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
-		btnEnviarCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnEnviarCadastroFilme.addActionListener(new ActionListener() {
+		JButton btnCancelarCadastroFilme = new JButton("Cancelar");
+		btnCancelarCadastroFilme.setBackground(UIManager.getColor("Menu.background"));
+		btnCancelarCadastroFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnCancelarCadastroFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 			}
 		});
-		btnEnviarCadastroFilme.setBounds(326, 330, 89, 23);
-		contentPane.add(btnEnviarCadastroFilme);
+		btnCancelarCadastroFilme.setBounds(326, 330, 89, 23);
+		contentPane.add(btnCancelarCadastroFilme);
 		
 		
 		

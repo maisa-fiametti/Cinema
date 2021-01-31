@@ -23,6 +23,8 @@ import model.dao.FilmeDAO;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowEvent;
 
 public class JFListarFilmes extends JFrame {
 
@@ -49,7 +51,14 @@ public class JFListarFilmes extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarFilmes() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent arg0) {
+				readJTable();
+			}
+			public void windowLostFocus(WindowEvent arg0) {
+			}
+		});
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 459, 393);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(245, 222, 179));
@@ -84,9 +93,15 @@ public class JFListarFilmes extends JFrame {
 		scrollPane.setViewportView(JtFilme);
 		
 		JButton btnCadastrarFilme = new JButton("Cadastrar Filme");
+		btnCadastrarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadatrarFilme cf = new JFCadatrarFilme();
+				cf.setVisible(true);
+			}
+		});
 		btnCadastrarFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnCadastrarFilme.setBackground(SystemColor.menu);
-		btnCadastrarFilme.setBounds(26, 312, 138, 31);
+		btnCadastrarFilme.setBounds(22, 272, 138, 31);
 		contentPane.add(btnCadastrarFilme);
 		
 		JButton btnAlterarFilme = new JButton("Alterar Filme");
@@ -109,7 +124,7 @@ public class JFListarFilmes extends JFrame {
 		});
 		btnAlterarFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnAlterarFilme.setBackground(SystemColor.menu);
-		btnAlterarFilme.setBounds(174, 312, 136, 31);
+		btnAlterarFilme.setBounds(22, 312, 140, 31);
 		contentPane.add(btnAlterarFilme);
 		
 		JButton btnExcluirFilme = new JButton("Excluir Filme");
@@ -133,8 +148,18 @@ public class JFListarFilmes extends JFrame {
 		});
 		btnExcluirFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnExcluirFilme.setBackground(SystemColor.menu);
-		btnExcluirFilme.setBounds(320, 312, 111, 31);
+		btnExcluirFilme.setBounds(216, 272, 138, 31);
 		contentPane.add(btnExcluirFilme);
+		
+		JButton btnCancelarFilme = new JButton("Cancelar Filme");
+		btnCancelarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelarFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnCancelarFilme.setBounds(216, 317, 138, 26);
+		contentPane.add(btnCancelarFilme);
 		
 		readJTable();
 	}
@@ -154,5 +179,4 @@ public class JFListarFilmes extends JFrame {
 		}
 		
 	}
-	
 }

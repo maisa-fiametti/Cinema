@@ -25,6 +25,8 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowEvent;
 
 public class JFListarClientes extends JFrame {
 
@@ -51,7 +53,14 @@ public class JFListarClientes extends JFrame {
 	 * Create the frame.
 	 */
 	public JFListarClientes() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent e) {
+				readJTable();
+			}
+			public void windowLostFocus(WindowEvent e) {
+			}
+		});
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 535, 433);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.BLACK);
@@ -89,6 +98,13 @@ public class JFListarClientes extends JFrame {
 		scrollPane.setViewportView(JtCliente);
 		
 		JButton btnCadastrarCliente = new JButton("Cadastrar Cliente");
+		btnCadastrarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarCliente cf = new JFCadastrarCliente();
+				cf.setVisible(true);
+				dispose();
+			}
+		});
 		btnCadastrarCliente.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCadastrarCliente.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnCadastrarCliente.setBackground(SystemColor.menu);
@@ -113,7 +129,7 @@ public class JFListarClientes extends JFrame {
 		});
 		btnAlterarCliente.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnAlterarCliente.setBackground(SystemColor.menu);
-		btnAlterarCliente.setBounds(197, 306, 133, 33);
+		btnAlterarCliente.setBounds(43, 350, 148, 33);
 		contentPane.add(btnAlterarCliente);
 		
 		JButton btnNewButton = new JButton("Excluir Cliente");
@@ -137,8 +153,18 @@ public class JFListarClientes extends JFrame {
 		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		btnNewButton.setBounds(360, 306, 133, 33);
+		btnNewButton.setBounds(253, 306, 133, 33);
 		contentPane.add(btnNewButton);
+		
+		JButton btnCancelarCliente = new JButton("Cancelar");
+		btnCancelarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnCancelarCliente.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnCancelarCliente.setBounds(253, 356, 133, 27);
+		contentPane.add(btnCancelarCliente);
 		
 		readJTable();
 		

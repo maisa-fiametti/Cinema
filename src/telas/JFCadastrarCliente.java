@@ -50,7 +50,7 @@ public class JFCadastrarCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public JFCadastrarCliente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 537, 444);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.BLACK);
@@ -145,6 +145,7 @@ public class JFCadastrarCliente extends JFrame {
 				c.setIdade(Integer.parseInt(textIdadeCliente.getText().toString()));
 				
 				dao.create(c);
+				dispose();
 			}
 		});  
 		btnBotaoCadastrar.setBackground(UIManager.getColor("Menu.background"));
@@ -153,15 +154,24 @@ public class JFCadastrarCliente extends JFrame {
 		contentPane.add(btnBotaoCadastrar);
 		
 		JButton btnBotaoEditar = new JButton("Editar");
+		btnBotaoEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBotaoEditar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnBotaoEditar.setBackground(UIManager.getColor("MenuBar.background"));
 		btnBotaoEditar.setBounds(222, 325, 89, 23);
 		contentPane.add(btnBotaoEditar);
 		
-		JButton btnBotaoEnviar = new JButton("Enviar");
-		btnBotaoEnviar.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnBotaoEnviar.setBackground(UIManager.getColor("MenuBar.background"));
-		btnBotaoEnviar.setBounds(321, 325, 89, 23);
-		contentPane.add(btnBotaoEnviar);
+		JButton btnBotaoCancelar = new JButton("Cancelar");
+		btnBotaoCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnBotaoCancelar.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnBotaoCancelar.setBackground(UIManager.getColor("MenuBar.background"));
+		btnBotaoCancelar.setBounds(321, 325, 89, 23);
+		contentPane.add(btnBotaoCancelar);
 	}
 }

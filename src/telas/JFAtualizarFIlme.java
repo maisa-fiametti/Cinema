@@ -219,6 +219,7 @@ public class JFAtualizarFIlme extends JFrame {
 					f.setDublado(false);
 				}
 				dao.update(f);
+				dispose();
 			}
 		});
 		btnAlterarFilme.setBackground(UIManager.getColor("MenuBar.background"));
@@ -228,19 +229,29 @@ public class JFAtualizarFIlme extends JFrame {
 		contentPane.add(btnAlterarFilme);
 		
 		JButton btnLimparAlteracaoFilme = new JButton("Limpar");
+		btnLimparAlteracaoFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textTituloFilme.setText(null);
+				textSinopseFilme.setText(null);
+				textCategoriaFilme.setText(null);
+				spinnerTempoFilme.setValue(0);
+				imagem.clearSelection();
+				audio.clearSelection();
+			}
+		});
 		btnLimparAlteracaoFilme.setBackground(UIManager.getColor("Menu.background"));
 		btnLimparAlteracaoFilme.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnLimparAlteracaoFilme.setBounds(219, 373, 89, 23);
 		contentPane.add(btnLimparAlteracaoFilme);
-		
-		JButton btnEnviaraltercaoFilme = new JButton("Enviar");
-		btnEnviaraltercaoFilme.setBackground(UIManager.getColor("Menu.background"));
-		btnEnviaraltercaoFilme.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnEnviaraltercaoFilme.addActionListener(new ActionListener() {
+	CancelarraltercaoFilme = new JButton("Cancelar");
+		btnCancelarraltercaoFilme.setBackground(UIManager.getColor("Menu.background"));
+		btnCancelarraltercaoFilme.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnCancelarraltercaoFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnEnviaraltercaoFilme.setBounds(338, 373, 89, 23);
+		btnCancelarraltercaoFilme.setBounds(338, 373, 89, 23);
+		contentPane.add(btnCancelar23);
 		contentPane.add(btnEnviaraltercaoFilme);
 		
 		
